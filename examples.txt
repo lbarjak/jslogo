@@ -1,53 +1,310 @@
-to star
-  repeat 5 [ fd 100 rt 144 ]
+﻿;ONE ROW OF FOURHEALDS PATTERN
+;A NÉGYNYÜSTÖS MINTÁNAK EGY SORA
+hideturtle ;elrejti a teknőst
+clearscreen ;törli a képernyőt
+penup ;felelmeli a tollat
+;a "make" egy változó deklarálása 
+make "1 "W.....W.....W.....W.W.W....WWW.........W.....
+make "i 0
+make "size 10 ;a minta egy elemének mérete, lehet vele játszani
+to square :size ;a mintaelemek ;to-end között a négyzetrajzoló függvény
+repeat 4 [fd :size rt 90] ;itt rajzolja négyzet négy oldalát
 end
-clearscreen
-star
-
-to square :length
-  repeat 4 [ fd :length rt 90 ]
-end
-to randomcolor
-  setcolor pick [ red orange yellow green blue violet ]
-end
-clearscreen
-repeat 36 [ randomcolor square random 200 rt 10 ]
-
-clearscreen window hideturtle
-repeat 144 [
-  setlabelheight repcount
+repeat count :1 [ ; a mintasor hosszának megfelelő ismétlésszám
+  make "i :i + 1 ; a következő helyre áll
   penup
-  fd repcount * repcount / 30
-  label "Logo
-  bk repcount * repcount / 30
-  pendown
-  rt 10
-  wait 5
+  setx (:i - 1 - 0.5 * count :1) * :size ;balra eltolja a kirajzolt sort, hogy középen legyen
+  if (item :i :1) = "W [ ;ha "W"-t talál, oda rajzol egy négyzetet (egyébként kimarad az a hely)
+    pendown ;leteszi a tollat
+    filled "black [ square :size ] ;meghívja a négyzetrajzoló függvényt
+  ]
 ]
-showturtle
 
-to tree :size
-   if :size < 5 [forward :size back :size stop]
-   forward :size/3
-   left 30 tree :size*2/3 right 30
-   forward :size/6
-   right 25 tree :size/2 left 25
-   forward :size/3
-   right 25 tree :size/2 left 25
-   forward :size/6
-   back :size
-end
+;SNAKE BACKSTRAP
+;KÍGYÓHÁTAS SZALAG
+cs pu lt 90 fd 290 rt 90 fd 230 pd
+;
+repeat 16 [ filled "red [ rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 ]
+;
+pu rt 90 fd 37 lt 90 pd ]
+;
+pu lt 90 fd (37 * 15.5) rt 90 fd -95 pd
+;
+repeat 6 [ filled "white [ rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 ]
+pu rt 90 fd 37 lt 90 pd ]
+repeat 3 [ filled "red [ rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 ]
+pu rt 90 fd 37 lt 90 pd ]
+repeat 6 [ filled "white [ rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 ]
+pu rt 90 fd 37 lt 90 pd ]
+;
+pu lt 90 fd (37 * 15.5) rt 90 fd -95 pd
+;
+repeat 16 [ filled "red [ rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 ]
+;
+pu rt 90 fd 37 lt 90 pd ]
+;
+pu lt 90 fd (37 * 15.5) rt 90 fd -95 pd
+;
+repeat 6 [ filled "white [ rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 ]
+pu rt 90 fd 37 lt 90 pd ]
+repeat 3 [ filled "red [ rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 ]
+pu rt 90 fd 37 lt 90 pd ]
+repeat 6 [ filled "white [ rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 ]
+pu rt 90 fd 37 lt 90 pd ]
+;
+pu lt 90 fd (37 * 15.5) rt 90 fd -95 pd
+;
+repeat 16 [ filled "red [ rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 rt 45 fd 25 rt 90 fd 25 rt 45 fd 75 ]
+;
+pu rt 90 fd 37 lt 90 pd ]
+
+;STRIPED BACKSTRAP
+;CSÍKOS SZALAG
+cs
+pu lt 90 fd 290
+rt 90 fd 230 pd
+;
+repeat 16
+[ filled "red [
+rt 45 fd 25 rt 90 fd 25
+rt 45 fd 75 rt 45 fd 25
+rt 90 fd 25 rt 45 fd 75 ]
+;
+pu rt 90 fd 37
+lt 90 pd ]
+;
+; go to the second row
+;
+pu lt 90 fd (37 * 15.5)
+rt 90 fd -95 pd
+;
+repeat 15
+[ filled "white [
+rt 45 fd 25 rt 90 fd 25
+rt 45 fd 75 rt 45 fd 25
+rt 90 fd 25 rt 45 fd 75 ]
+;
+pu rt 90 fd 37
+lt 90 pd ]
+;
+; go to the third row
+;
+pu lt 90 fd (37 * 15.5)
+rt 90 fd -95 pd
+;
+repeat 16
+[ filled "red [
+rt 45 fd 25 rt 90 fd 25
+rt 45 fd 75 rt 45 fd 25
+rt 90 fd 25 rt 45 fd 75 ]
+;
+pu rt 90 fd 37
+lt 90 pd ]
+;
+; go to the fourth row
+;
+pu lt 90 fd (37 * 15.5)
+rt 90 fd -95 pd
+;
+repeat 15
+[ filled "white [
+rt 45 fd 25 rt 90 fd 25
+rt 45 fd 75 rt 45 fd 25
+rt 90 fd 25 rt 45 fd 75 ]
+;
+pu rt 90 fd 37
+lt 90 pd ]
+;
+; go to the fifth row
+;
+pu lt 90 fd (37 * 15.5)
+rt 90 fd -95 pd
+;
+repeat 16
+[ filled "red [
+rt 45 fd 25 rt 90 fd 25
+rt 45 fd 75 rt 45 fd 25
+rt 90 fd 25 rt 45 fd 75 ]
+;
+pu rt 90 fd 37
+lt 90 pd ]
+
+;TWO ROWS
+;KÉT SOR
 clearscreen
-tree 150
+penup
+left 90
+forward 300
+right 90
+forward 200
+pendown
+;
+repeat 8
+[
+filled "red [
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+]
+;
+penup
+right 90
+forward 74
+left 90
+pd
+]
+;
+; menj a második sor elejére
+;
+pu
+left 90
+forward (74 * 7.5)
+; így lehet matek kifejezést használni szám helyett
+right 90
+forward -189
+; hátra is tud menni a teknős
+pd
+;
+repeat 7
+[
+filled "white [
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+]
+;
+penup
+right 90
+forward 74
+left 90
+pd
+]
 
-to fern :size :sign
-  if :size < 1 [ stop ]
-  fd :size
-  rt 70 * :sign fern :size * 0.5 :sign * -1 lt 70 * :sign
-  fd :size
-  lt 70 * :sign fern :size * 0.5 :sign rt 70 * :sign
-  rt 7 * :sign fern :size - 1 :sign lt 7 * :sign
-  bk :size * 2
-end
-window clearscreen pu bk 150 pd
-fern 25 1
+;ONE ROW
+;EGY SOR
+clearscreen ;töröld le a táblát
+penup ;(vagy pu) emeld fel a tollat
+left 90 ;fordulj balra derékszögben
+forward 300 ;menj előre 300 pixelt
+right 90 ;fordulj jobbra derékszögben
+forward 200
+pendown ;(vagy pd) tedd le a tollat
+;
+;A hatszögrajzolást és utána a következő
+;elejéhez lépést nyolcszor ismételjük
+;
+repeat 8
+[
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+;
+penup ;emeld fel a tollat
+right 90
+forward 72
+left 90
+pd ;tedd le a tollat
+]
+
+;THREE HEXAGONS
+;HÁROM HATSZÖG
+cs
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+;
+penup; emeld fel a tollat
+right 90
+forward 72
+left 90
+pd; tedd le a tollat
+;
+; még egy hatszög
+;
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+;
+; menj tovább, bemásoljuk az előző öt ilyen sort
+;
+pu ; emeld fel a tollat
+right 90
+forward 72
+left 90
+pd
+;
+; ...és még egy hatszög
+;
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+
+;HEXAGON
+;HATSZÖG
+clearscreen
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
+right 45
+forward 50
+right 90
+forward 50
+right 45
+forward 150
